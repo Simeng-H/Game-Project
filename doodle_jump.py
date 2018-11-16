@@ -6,6 +6,9 @@ camera = gamebox.Camera(400,600)
 # Key attributes
 
 
+
+
+
 # Definitions
 
 
