@@ -7,12 +7,15 @@ camera = gamebox.Camera(400,600)
 
 
 # Definitions
+user = gamebox.from_color(200, 550, "brown", 20, 20)
 
 
 # Mainloop
 def tick(keys):
-    pass
+    camera.clear("white")
 
+    camera.draw(user)
+    camera.display()
 
 # Initiation
 gamebox.timer_loop(60,tick)
