@@ -9,8 +9,6 @@ camera = gamebox.Camera(400,600)
 # Definitions
 
 
-
-
 # Mainloop
 def tick(keys):
     pass
