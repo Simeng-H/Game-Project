@@ -1,12 +1,9 @@
 # Written by Simeng Hao (sh4aj) and Derek Habron (hjb5ek)
 
-import pygame
 import gamebox
 camera = gamebox.Camera(400,600)
 
 # Key attributes
-
-
 
 
 # Definitions
