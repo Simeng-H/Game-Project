@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d197e32-9821-4513-914d-32dec73cfb09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doodle_jump.py" beforeDir="false" afterPath="$PROJECT_DIR$/doodle_jump.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,12 +16,16 @@
     <session id="-67759386">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1340" />
+          <entry key="Python Console" value="12" />
+          <entry key="dummy" value="10" />
+          <entry key="py" value="2385" />
+          <entry key="txt" value="213" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1340" />
+          <entry key="PLAIN_TEXT" value="223" />
+          <entry key="Python" value="2397" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -60,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gamebox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8145">
-              <caret line="546" selection-start-line="546" selection-end-line="546" />
+            <state relative-caret-position="160">
+              <caret line="132" column="13" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -69,11 +73,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/doodle_jump.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="40" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+            <state relative-caret-position="270">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
               <folding>
                 <element signature="e#58#84#0" expanded="true" />
-                <marker date="1542687454564" expanded="true" signature="1968:1971" ph="..." />
+                <marker date="1542693880114" expanded="true" signature="627:731" ph="..." />
+                <marker date="1542693880114" expanded="true" signature="728:731" ph="..." />
               </folding>
             </state>
           </provider>
@@ -82,8 +87,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            <state relative-caret-position="135">
+              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+              <folding>
+                <marker date="1542693784472" expanded="true" signature="109:110" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,6 +104,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>from_text</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -119,9 +132,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="234" />
+    <option name="y" value="23" />
+    <option name="width" value="1060" />
+    <option name="height" value="808" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -221,26 +236,26 @@
       <option name="presentableId" value="Default" />
       <updated>1542344843748</updated>
     </task>
-    <task id="LOCAL-00001" summary="Test Commitment">
-      <created>1542344958233</created>
+    <task id="LOCAL-00001" summary="Adds in a module for testing">
+      <created>1542687552078</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1542344958233</updated>
+      <updated>1542687552078</updated>
     </task>
-    <task id="LOCAL-00002" summary="Starting point">
-      <created>1542345211173</created>
+    <task id="LOCAL-00002" summary="Restructuring with introduction of some helper functions">
+      <created>1542687629397</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1542345211173</updated>
+      <updated>1542687629397</updated>
     </task>
-    <task id="LOCAL-00003" summary="Starting point">
-      <created>1542345371025</created>
+    <task id="LOCAL-00003" summary="A (somewhat) functional version of the game itself">
+      <created>1542690158360</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1542345371025</updated>
+      <updated>1542690158360</updated>
     </task>
     <task id="LOCAL-00004" summary="Starting point">
       <created>1542345453785</created>
@@ -270,26 +285,27 @@
       <option name="project" value="LOCAL" />
       <updated>1542425795394</updated>
     </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="234" y="23" width="1060" height="808" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18252291" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24927816" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989429" visible="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39944133" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989429" visible="true" weight="0.38128492" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3987952" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49964765" weight="0.32960895" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010571" side_tool="true" weight="0.32960895" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -324,6 +340,23 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adds in a module for testing" />
+    <MESSAGE value="Restructuring with introduction of some helper functions" />
+    <MESSAGE value="A (somewhat) functional version of the game itself" />
+    <option name="LAST_COMMIT_MESSAGE" value="A (somewhat) functional version of the game itself" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Experiment.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -337,25 +370,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gamebox.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8145">
-          <caret line="546" selection-start-line="546" selection-end-line="546" />
+        <state relative-caret-position="160">
+          <caret line="132" column="13" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        <state relative-caret-position="135">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding>
+            <marker date="1542693784472" expanded="true" signature="109:110" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/doodle_jump.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="40" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+        <state relative-caret-position="270">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding>
             <element signature="e#58#84#0" expanded="true" />
-            <marker date="1542687454564" expanded="true" signature="1968:1971" ph="..." />
+            <marker date="1542693880114" expanded="true" signature="627:731" ph="..." />
+            <marker date="1542693880114" expanded="true" signature="728:731" ph="..." />
           </folding>
         </state>
       </provider>

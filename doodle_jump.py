@@ -1,9 +1,8 @@
 # Written by Simeng Hao (sh4aj) and Derek Habron (hjb5ek)
 from random import randint
-
 import pygame
-
 import gamebox
+from math import factorial
 
 # Key attributes
 CAMERA_WIDTH = 400
@@ -17,27 +16,28 @@ PLAYER_X_SPEED_INCREMENT = 10
 FRICTION = 0.5
 GRAVITY = 0.5
 REBOUNCE_SPEED = -15
-FRAME_PER_MOVEMENT = 10
+FRAME_PER_MOVEMENT = 30
 
 
-# Definitions:
+# Definitions
+
+def binom(n, p, k):
+    def nCr(n, r):
+        f = factorial
+        return f(n) / (f(n - r) * f(r))
+
+    return nCr(n, k) * (p ** k) * ((1 - p) ** (n - k))
+
+
+def binom_list(length):
+    list = []
+    for i in range(length):
+        list.append(binom(length, 0.5, i))
+    return list
+
+
 def rand_platform_x():
     return randint(PLATFORM_WIDTH / 2, CAMERA_WIDTH - (PLATFORM_WIDTH / 2) + 1)
-
-
-# Preparation
-camera = gamebox.Camera(CAMERA_WIDTH, CAMERA_HEIGHT)
-player = gamebox.from_color(200, 550, "brown", 20, 20)
-player.speedy = -20
-platforms = [
-    gamebox.from_color(
-        rand_platform_x(),
-        CAMERA_HEIGHT - VERTICAL_DIST_BTW_PLATFORMS * i,
-        "Green",
-        PLATFORM_WIDTH, PLATFORM_HEIGHT)
-    for i in range(PLATFORM_COUNT)]
-objects = platforms + [player]
-movement_each_frame = []
 
 
 def hits_platform(player, platforms):
@@ -66,33 +66,50 @@ def move_player_vertically():
         player.speedy = REBOUNCE_SPEED
 
 
-def divide_int_into_list(numerator, denominator, list):
-    for i in range(denominator):
-        list.append(numerator/denominator)
+def create_movement_list(displacement, list):
+    for i in range(FRAME_PER_MOVEMENT):
+        list.append(displacement * movement_coefficients[i])
+
 
 def respawn_platforms():
     for i in range(PLATFORM_COUNT):
         platform = platforms[i]
         if platform.y >= CAMERA_HEIGHT:
-           platform.x = rand_platform_x()
-           platform.y = platforms[(i + PLATFORM_COUNT - 1) % PLATFORM_COUNT].y - VERTICAL_DIST_BTW_PLATFORMS
+            platform.x = rand_platform_x()
+            platform.y = platforms[(i + PLATFORM_COUNT - 1) % PLATFORM_COUNT].y - VERTICAL_DIST_BTW_PLATFORMS
+
 
 def scroll_downwards(list):
     try:
         movement = list.pop()
     except IndexError:
-        movement = 0
+        pass
+        #movement = 0
     else:
         for object in objects:
-            object.move(0,movement)
+            object.move(0, movement)
         respawn_platforms()
 
+
+# Preparation
+camera = gamebox.Camera(CAMERA_WIDTH, CAMERA_HEIGHT)
+player = gamebox.from_color(200, 550, "brown", 20, 20)
+player.speedy = -20
+platforms = [
+    gamebox.from_color(
+        rand_platform_x(),
+        CAMERA_HEIGHT - VERTICAL_DIST_BTW_PLATFORMS * i,
+        "Green",
+        PLATFORM_WIDTH, PLATFORM_HEIGHT)
+    for i in range(PLATFORM_COUNT)]
+objects = platforms + [player]
+movement_each_frame = []
+movement_coefficients = binom_list(FRAME_PER_MOVEMENT)
 
 
 # Mainloop
 def tick(keys):
     camera.clear("white")
-    rebounced = False
 
     move_player_horizontally(keys)
     move_player_vertically()
@@ -101,11 +118,9 @@ def tick(keys):
 
     if hits_platform(player, platforms):
         displacement = Y_BASELINE - player.y
-        divide_int_into_list(displacement, FRAME_PER_MOVEMENT, movement_each_frame)
+        create_movement_list(displacement, movement_each_frame)
 
     scroll_downwards(movement_each_frame)
-
-
 
     for platform in platforms:
         camera.draw(platform)
