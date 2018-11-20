@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d197e32-9821-4513-914d-32dec73cfb09" name="Default Changelist" comment="">
+    <list default="true" id="9d197e32-9821-4513-914d-32dec73cfb09" name="Default Changelist" comment="A (somewhat) functional version of the game itself">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doodle_jump.py" beforeDir="false" afterPath="$PROJECT_DIR$/doodle_jump.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,14 +17,14 @@
         <counts>
           <entry key="Python Console" value="12" />
           <entry key="dummy" value="10" />
-          <entry key="py" value="2385" />
-          <entry key="txt" value="213" />
+          <entry key="py" value="2393" />
+          <entry key="txt" value="272" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="223" />
-          <entry key="Python" value="2397" />
+          <entry key="PLAIN_TEXT" value="282" />
+          <entry key="Python" value="2405" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -70,21 +69,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/doodle_jump.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state relative-caret-position="231">
+              <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
               <folding>
                 <element signature="e#58#84#0" expanded="true" />
-                <marker date="1542693880114" expanded="true" signature="627:731" ph="..." />
-                <marker date="1542693880114" expanded="true" signature="728:731" ph="..." />
+                <marker date="1542694045374" expanded="true" signature="627:731" ph="..." />
+                <marker date="1542694045374" expanded="true" signature="728:731" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Experiment.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
@@ -257,12 +256,12 @@
       <option name="project" value="LOCAL" />
       <updated>1542690158360</updated>
     </task>
-    <task id="LOCAL-00004" summary="Starting point">
-      <created>1542345453785</created>
+    <task id="LOCAL-00004" summary="Improves scrolling: now accelerates and decelerates">
+      <created>1542694243923</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1542345453785</updated>
+      <updated>1542694243923</updated>
     </task>
     <task id="LOCAL-00005" summary="Starting point">
       <created>1542345839030</created>
@@ -285,7 +284,7 @@
       <option name="project" value="LOCAL" />
       <updated>1542425795394</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -344,7 +343,8 @@
     <MESSAGE value="Adds in a module for testing" />
     <MESSAGE value="Restructuring with introduction of some helper functions" />
     <MESSAGE value="A (somewhat) functional version of the game itself" />
-    <option name="LAST_COMMIT_MESSAGE" value="A (somewhat) functional version of the game itself" />
+    <MESSAGE value="Improves scrolling: now accelerates and decelerates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improves scrolling: now accelerates and decelerates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -375,24 +375,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/doodle_jump.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+          <folding>
+            <element signature="e#58#84#0" expanded="true" />
+            <marker date="1542694045374" expanded="true" signature="627:731" ph="..." />
+            <marker date="1542694045374" expanded="true" signature="728:731" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Experiment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
           <folding>
             <marker date="1542693784472" expanded="true" signature="109:110" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doodle_jump.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding>
-            <element signature="e#58#84#0" expanded="true" />
-            <marker date="1542693880114" expanded="true" signature="627:731" ph="..." />
-            <marker date="1542693880114" expanded="true" signature="728:731" ph="..." />
           </folding>
         </state>
       </provider>
