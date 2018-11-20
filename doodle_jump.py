@@ -6,17 +6,17 @@ import pygame
 import gamebox
 
 # Key attributes
+CAMERA_WIDTH = 400
+CAMERA_HEIGHT = 600
 PLATFORM_HEIGHT = 10
 PLATFORM_WIDTH = 60
 VERTICAL_DIST_BTW_PLATFORMS = 100
 PLATFORM_COUNT = 6
-PLATFORM_BASELINE_Y_POS = 50
-PLAYER_X_SPEED_INCREMENT = 5
-FRICTION = 0.7
+Y_BASELINE = CAMERA_HEIGHT - 50
+PLAYER_X_SPEED_INCREMENT = 10
+FRICTION = 0.5
 GRAVITY = 0.5
 REBOUNCE_SPEED = -15
-CAMERA_WIDTH = 400
-CAMERA_HEIGHT = 600
 FRAME_PER_MOVEMENT = 10
 
 
@@ -36,13 +36,17 @@ platforms = [
         "Green",
         PLATFORM_WIDTH, PLATFORM_HEIGHT)
     for i in range(PLATFORM_COUNT)]
+objects = platforms + [player]
+movement_each_frame = []
+
 
 def hits_platform(player, platforms):
     """ returns whether the player lands on any of the platforms"""
     for platform in platforms:
-        if player.bottom_touches(platform) and player.speedy>0:
+        if player.bottom_touches(platform) and player.speedy > 0:
             return True
     return False
+
 
 def move_player_horizontally(keys):
     if pygame.K_LEFT in keys:
@@ -58,30 +62,31 @@ def move_player_horizontally(keys):
 
 def move_player_vertically():
     player.speedy += GRAVITY
-    if hits_platform(player,platforms):
+    if hits_platform(player, platforms):
         player.speedy = REBOUNCE_SPEED
 
 
 def divide_int_into_list(numerator, denominator, list):
-    remainder = numerator % denominator
-    center = denominator // 2
-    start = center - remainder // 2
-    end = center + (remainder - remainder // 2)
-    sum = 0
     for i in range(denominator):
-        list.append(numerator // denominator)
-    for i in range(start, end):
-        list[i] += 1
+        list.append(numerator/denominator)
 
+def respawn_platforms():
+    for i in range(PLATFORM_COUNT):
+        platform = platforms[i]
+        if platform.y >= CAMERA_HEIGHT:
+           platform.x = rand_platform_x()
+           platform.y = platforms[(i + PLATFORM_COUNT - 1) % PLATFORM_COUNT].y - VERTICAL_DIST_BTW_PLATFORMS
 
+def scroll_downwards(list):
+    try:
+        movement = list.pop()
+    except IndexError:
+        movement = 0
+    else:
+        for object in objects:
+            object.move(0,movement)
+        respawn_platforms()
 
-
-
-movement_each_frame = []
-
-
-def scroll_downwards(displacement):
-    pass
 
 
 # Mainloop
@@ -94,15 +99,13 @@ def tick(keys):
 
     player.move_speed()
 
-    # Movement of platform:
-    if rebounced:
-        for i in range(PLATFORM_COUNT):
-            platform = platforms[i]
-            # platform.move(0, displacement)
-            if platform.y >= CAMERA_HEIGHT:
-                platform.x = rand_platform_x()
-                platform.y = platforms[(i + PLATFORM_COUNT - 1) % PLATFORM_COUNT].y - VERTICAL_DIST_BTW_PLATFORMS
-        rebounced = False
+    if hits_platform(player, platforms):
+        displacement = Y_BASELINE - player.y
+        divide_int_into_list(displacement, FRAME_PER_MOVEMENT, movement_each_frame)
+
+    scroll_downwards(movement_each_frame)
+
+
 
     for platform in platforms:
         camera.draw(platform)
@@ -111,4 +114,4 @@ def tick(keys):
 
 
 # Initiation
-gamebox.timer_loop(60, tick)
+gamebox.timer_loop(120, tick)
