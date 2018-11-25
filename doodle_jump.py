@@ -1,8 +1,11 @@
-# Written by Simeng Hao (sh4aj) and Derek Habron (hjb5ek)
-from random import randint
-import pygame
-import gamebox
+# Written by Simeng Hao (sh4aj) and Derek Habron (hjb5es)
+# Modeled after Doodle Jump
 from math import factorial
+from random import randint
+
+import pygame
+
+import gamebox
 
 # Key attributes
 CAMERA_WIDTH = 400
@@ -12,8 +15,8 @@ PLATFORM_WIDTH = 60
 VERTICAL_DIST_BTW_PLATFORMS = 100
 PLATFORM_COUNT = 6
 Y_BASELINE = CAMERA_HEIGHT - 50
-PLAYER_X_SPEED_INCREMENT = 10
-FRICTION = 0.5
+PLAYER_X_SPEED_INCREMENT = 3
+FRICTION = 0.8
 GRAVITY = 0.5
 REBOUNCE_SPEED = -15
 FRAME_PER_MOVEMENT = 30
