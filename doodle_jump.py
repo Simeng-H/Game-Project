@@ -1,4 +1,4 @@
-# Written by Simeng Hao (sh4aj) and Derek Habron (hjb5es)
+# Written by Simeng Hao (sh4aj) and Derek Habron (djh5es)
 # Modeled after Doodle Jump
 from math import factorial
 from random import randint
