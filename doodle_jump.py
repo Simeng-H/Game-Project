@@ -6,25 +6,21 @@ from random import randint
 import pygame
 
 import gamebox
-
-# Key attributes
-CAMERA_WIDTH = 400
-CAMERA_HEIGHT = 600
-PLATFORM_HEIGHT = 10
-PLATFORM_WIDTH = 60
-VERTICAL_DIST_BTW_PLATFORMS = 100
-PLATFORM_COUNT = 6
-Y_BASELINE = CAMERA_HEIGHT - 50
-PLAYER_X_SPEED_INCREMENT = 3
-FRICTION = 0.8
-GRAVITY = 0.5
-REBOUNCE_SPEED = -15
-FRAME_PER_MOVEMENT = 30
+from const import *
 
 
 # Definitions
 
 def binom(n, p, k):
+    """
+    returns the probability of k positive results out of n tests, where the probability of having a positive result
+    in a test is p.
+    :param n: int
+    :param p: float
+    :param k: int
+    :return: float
+    """
+
     def nCr(n, r):
         f = factorial
         return f(n) / (f(n - r) * f(r))
@@ -33,6 +29,11 @@ def binom(n, p, k):
 
 
 def binom_list(length):
+    """
+    return a list of length n where the elements follows the binomial distribution curve and sums to 1
+    :param length: int
+    :return: list
+    """
     list = []
     for i in range(length):
         list.append(binom(length, 0.5, i))
@@ -40,6 +41,10 @@ def binom_list(length):
 
 
 def rand_platform_x():
+    """
+    returns a
+    :return: int
+    """
     return randint(PLATFORM_WIDTH / 2, CAMERA_WIDTH - (PLATFORM_WIDTH / 2) + 1)
 
 
@@ -87,16 +92,52 @@ def scroll_downwards(list):
         movement = list.pop()
     except IndexError:
         pass
-        #movement = 0
     else:
         for object in objects:
             object.move(0, movement)
         respawn_platforms()
 
 
+def draw_highscore(x, y):
+    f = open("highscore.txt")
+    i = 0
+    boxes = []
+    for line in f:
+        if i >= 10:
+            break
+        box = gamebox.from_text(x, y + 60 * i,line,25,"white")
+        camera.draw(box)
+        i += i
+
+
+
+def end_screen(score):
+    camera.clear("black")
+    draw_highscore(80,80)
+    camera.display()
+    # global
+
+
+def start_screen(keys):
+    global game_started
+    camera.clear("White")
+    camera.draw("use left and right arrow to move", 30, "black", CAMERA_WIDTH / 2, CAMERA_HEIGHT / 2)
+    camera.draw("""press left or right to start""", 30, "black", CAMERA_WIDTH / 2, CAMERA_HEIGHT / 2 + 60)
+    camera.display()
+    if pygame.K_LEFT in keys or pygame.K_RIGHT in keys:
+        game_started = True
+
+
+def display_scorebox():
+    score_box = gamebox.from_text(50, 50, str(score), 30, "Black")
+    camera.draw(score_box)
+    del score_box
+
+
 # Preparation
 camera = gamebox.Camera(CAMERA_WIDTH, CAMERA_HEIGHT)
-player = gamebox.from_color(200, 550, "brown", 20, 20)
+# player = gamebox.from_color(200, 550, "brown", 20, 20)
+player = gamebox.from_image(200, 550, "transparent cell.png")
 player.speedy = -20
 platforms = [
     gamebox.from_color(
@@ -108,27 +149,55 @@ platforms = [
 objects = platforms + [player]
 movement_each_frame = []
 movement_coefficients = binom_list(FRAME_PER_MOVEMENT)
+game_started = False
+game_lost = False
+score = 0
+player_height = 0
 
 
 # Mainloop
 def tick(keys):
-    camera.clear("white")
+    global game_started
+    global score
+    global player_height
+    global game_lost
 
-    move_player_horizontally(keys)
-    move_player_vertically()
+    if not game_started:
+        start_screen(keys)
 
-    player.move_speed()
+    if game_started:
 
-    if hits_platform(player, platforms):
-        displacement = Y_BASELINE - player.y
-        create_movement_list(displacement, movement_each_frame)
+        camera.clear("white")
 
-    scroll_downwards(movement_each_frame)
+        move_player_horizontally(keys)
+        move_player_vertically()
 
-    for platform in platforms:
-        camera.draw(platform)
-    camera.draw(player)
-    camera.display()
+        player.move_speed()
+        player_height -= player.speedy
+        if player_height >= score:
+            score = int(player_height)
+
+        if hits_platform(player, platforms):
+            displacement = Y_BASELINE - player.y
+            # max_height -= displacement
+            create_movement_list(displacement, movement_each_frame)
+
+        scroll_downwards(movement_each_frame)
+
+        if pygame.K_SPACE in keys:
+            game_lost = True
+
+        for platform in platforms:
+            camera.draw(platform)
+        # print(score)
+        camera.draw(player)
+        display_scorebox()
+        camera.display()
+    if not game_started:
+        start_screen(keys)
+    if game_lost:
+        end_screen(score)
+        gamebox.pause()
 
 
 # Initiation
