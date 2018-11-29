@@ -105,15 +105,14 @@ def draw_highscore(x, y):
     for line in f:
         if i >= 10:
             break
-        box = gamebox.from_text(x, y + 60 * i,line,25,"white")
+        box = gamebox.from_text(x, y + 60 * i, line, 25, "white")
         camera.draw(box)
         i += i
 
 
-
 def end_screen(score):
     camera.clear("black")
-    draw_highscore(80,80)
+    draw_highscore(80, 80)
     camera.display()
     # global
 
@@ -184,7 +183,7 @@ def tick(keys):
 
         scroll_downwards(movement_each_frame)
 
-        if pygame.K_SPACE in keys:
+        if player.y >= CAMERA_HEIGHT:
             game_lost = True
 
         for platform in platforms:
