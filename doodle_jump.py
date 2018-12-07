@@ -1,43 +1,13 @@
 # Written by Simeng Hao (sh4aj) and Derek Habron (djh5es)
 # Modeled after Doodle Jump
-from math import factorial
 from random import randint
 
-import pygame
-
 import gamebox
+from auxiliary_funcs import *
 from const import *
 
 
 # Definitions
-
-def binom(n, p, k):
-    """
-    returns the probability of k positive results out of n tests, where the probability of having a positive result
-    in a test is p.
-    :param n: int
-    :param p: float
-    :param k: int
-    :return: float
-    """
-
-    def nCr(n, r):
-        f = factorial
-        return f(n) / (f(n - r) * f(r))
-
-    return nCr(n, k) * (p ** k) * ((1 - p) ** (n - k))
-
-
-def binom_list(length):
-    """
-    return a list of length n where the elements follows the binomial distribution curve and sums to 1
-    :param length: int
-    :return: list
-    """
-    list = []
-    for i in range(length):
-        list.append(binom(length, 0.5, i))
-    return list
 
 
 def rand_platform_x():
@@ -57,15 +27,22 @@ def hits_platform(player, platforms):
 
 
 def move_player_horizontally(keys):
-    if pygame.K_LEFT in keys:
-        player.speedx -= PLAYER_X_SPEED_INCREMENT
-    if pygame.K_RIGHT in keys:
-        player.speedx += PLAYER_X_SPEED_INCREMENT
-    player.speedx *= FRICTION
-    if player.x <= 0:
-        player.x += CAMERA_WIDTH
-    if player.x > CAMERA_WIDTH:
-        player.x -= CAMERA_WIDTH
+    #TODO:change spritesheet
+   if pygame.K_LEFT in keys:
+       player.image = sprite_sheet[9]
+       player.speedx -= PLAYER_X_SPEED_INCREMENT
+   elif pygame.K_RIGHT in keys:
+       player.image = sprite_sheet[10]
+       player.speedx += PLAYER_X_SPEED_INCREMENT
+   else:
+       player.image = sprite_sheet[0]
+   player.speedx *= FRICTION
+   if player.x <= 0:
+       player.x += CAMERA_WIDTH
+   if player.x > CAMERA_WIDTH:
+       player.x -= CAMERA_WIDTH
+
+
 
 
 def move_player_vertically():
@@ -89,7 +66,7 @@ def respawn_platforms():
 
 def scroll_downwards(list):
     try:
-        movement = list.pop()
+        movement = list.pop(0)
     except IndexError:
         pass
     else:
@@ -98,23 +75,23 @@ def scroll_downwards(list):
         respawn_platforms()
 
 
-def draw_highscore(x, y):
-    f = open("highscore.txt")
+def draw_highscore(x, y, score_list):
     i = 0
-    boxes = []
-    for line in f:
+    for item in score_list:
         if i >= 10:
             break
-        box = gamebox.from_text(x, y + 60 * i, line, 25, "white")
+        score_text = "{}. {}".format(i,item)
+        box = gamebox.from_text(x, y + 60 * i, score_text, 25, "white")
         camera.draw(box)
-        i += i
+        i += 1
 
 
 def end_screen(score):
+    score_list = read_highscore(HIGHSCORE_PATH)
+    insert_into_highscore(score, score_list)
     camera.clear("black")
-    draw_highscore(80, 80)
-    camera.display()
-    # global
+    draw_highscore(80, 80, score_list)
+    update_highscore(HIGHSCORE_PATH, score_list)
 
 
 def start_screen(keys):
@@ -136,6 +113,7 @@ def display_scorebox():
 # Preparation
 camera = gamebox.Camera(CAMERA_WIDTH, CAMERA_HEIGHT)
 # player = gamebox.from_color(200, 550, "brown", 20, 20)
+sprite_sheet = gamebox.load_sprite_sheet(SPRITESHEET_PATH, SPRITESHEET_ROW_COUNT, SPRITESHEET_COLUMN_COUNT)
 player = gamebox.from_image(200, 550, "transparent cell.png")
 player.speedy = -20
 platforms = [
@@ -161,10 +139,7 @@ def tick(keys):
     global player_height
     global game_lost
 
-    if not game_started:
-        start_screen(keys)
-
-    if game_started:
+    if game_started and not game_lost:
 
         camera.clear("white")
 
@@ -192,12 +167,14 @@ def tick(keys):
         camera.draw(player)
         display_scorebox()
         camera.display()
-    if not game_started:
+    elif not game_started:
         start_screen(keys)
-    if game_lost:
+    elif game_lost:
         end_screen(score)
+        print("a")
         gamebox.pause()
+        camera.display()
 
 
 # Initiation
-gamebox.timer_loop(120, tick)
+gamebox.timer_loop(60, tick)
