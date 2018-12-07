@@ -4,7 +4,7 @@ import pygame
 from const import *
 
 
-# Binom and binom list is to produce a curve used to smooth out movement
+# binom and binom_list are to produce a curve used to smooth out movement
 # (so things don't scroll at constant speed)
 def binom(n, p, k):
     """
@@ -43,7 +43,7 @@ def read_highscore(filename):
     for line in f:
         score_list.append(int(line))
     f.close()
-    #print(score_list,"a")
+    # print(score_list,"a")
     return score_list
 
 
@@ -54,10 +54,10 @@ def insert_into_highscore(score, list):
 
 
 def update_highscore(filename, score_list):
-    #print(score_list,"b")
     f = open(filename, "w")
+    i = 0
     for item in score_list:
-        f.write(str(item)+"\n")
+        if i < 20:
+            f.write(str(item) + "\n")
+            i += 1
     f.close()
-
-
