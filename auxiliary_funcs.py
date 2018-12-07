@@ -2,6 +2,7 @@
 from math import factorial
 import pygame
 from const import *
+from random import randint
 
 
 # binom and binom_list are to produce a curve used to smooth out movement
@@ -61,3 +62,17 @@ def update_highscore(filename, score_list):
             f.write(str(item) + "\n")
             i += 1
     f.close()
+
+# random
+def rand_platform_x():
+    """
+    returns a
+    :return: int
+    """
+    return randint(PLATFORM_WIDTH / 2, CAMERA_WIDTH - (PLATFORM_WIDTH / 2) + 1)
+
+state = 0
+def toggle(n):
+    global state
+    state = (state+1)%n
+    return state
