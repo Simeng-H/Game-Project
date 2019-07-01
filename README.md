@@ -1,5 +1,5 @@
 # Cell Jump
-Game project for CS 1110, modeled after doodle jump
+Game project for CS 1110, modelled after doodle jump
 
 ### Optional Features:
 1. Animation: the cell is compressed and then reverted when hits a platform
